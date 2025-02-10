@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Consulta</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>➕ Crear Consulta</h1>
+    <a href="{{ url_for('listar_consultas') }}">🔙 Volver a la Lista</a>
+    <form method="POST">
+        <label for="fecha_consulta">Fecha consulta:</label>
+        <input type="date" id="fecha_consulta" name="fecha_consulta" required><br><br>
+        <label for="diagnostico">Diagnóstico:</label>
+        <input type="text" id="diagnostico" name="diagnostico" required><br><br>
+        <label for="veterinario_dni">Veterinario:</label>
+        <select id="veterinario_dni" name="veterinario_dni" required>
+            {% for veterinario in veterinarios %}
+                <option value="{{ veterinario.dni }}">{{ veterinario.dni }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="mascota_id">Mascota:</label>
+        <select id="mascota_id" name="mascota_id" required>
+            {% for mascota in mascotas %}
+                <option value="{{ mascota.id }}">{{ mascota.nombre }}</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Mascotas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🐩 Lista de Mascotas</h1>
+        <a class="btn" href="{{ url_for('index') }}">🏠 Volver al Inicio</a>
+        <a class="btn btn-primary" href="{{ url_for('crear_mascota') }}">➕ Registrar Mascota </a>
+        
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Edad</th>
+                <th>Fecha_N</th>
+                 <!-- Nueva columna para los botones -->
+            </tr>
+            {% for mascota in mascotas %}
+            <tr>
+                <td>{{ mascota.nombre }}</td>
+                <td>{{ mascota.tipo }}</td>
+                <td>{{ mascota.edad }}</td>
+                <td>{{ mascota.fecha_nacimiento}}</td>
+                <td class="acciones">
+                    <a class="btn btn-edit" href="{{ url_for('editar_mascota', id=mascota.id) }}">✏️ Editar</a>
+                    <form action="{{ url_for('eliminar_mascota', id=mascota.id) }}" method="POST" onsubmit="return confirm('¿Seguro que deseas eliminar este libro?');">
+                        <button class="btn btn-delete" type="submit">🗑️ Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

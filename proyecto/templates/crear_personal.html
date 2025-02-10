@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Personal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function toggleFields() {
+            var tipo = document.getElementById("tipo").value;
+            var veterinarioFields = document.getElementById("veterinarioFields");
+            var auxiliarFields = document.getElementById("auxiliarFields");
+
+            if (tipo === "Veterinario") {
+                veterinarioFields.style.display = "block";
+                auxiliarFields.style.display = "none";
+            } else if (tipo === "Auxiliar") {
+                veterinarioFields.style.display = "none";
+                auxiliarFields.style.display = "block";
+            } else {
+                veterinarioFields.style.display = "none";
+                auxiliarFields.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>➕ Crear Personal</h1>
+    <a href="{{ url_for('listar_personal') }}">🔙 Volver a la Lista</a>
+    <form method="POST">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required><br><br>
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required><br><br>
+        <label for="nombre">Nombres:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" required onchange="toggleFields()">
+            <option value="">Seleccione un tipo</option>
+            <option value="Veterinario">Veterinario</option>
+            <option value="Auxiliar">Auxiliar</option>
+        </select><br><br>
+
+        <div id="veterinarioFields" style="display:none;">
+            <label for="fecha_alta">Fecha de Alta:</label>
+            <input type="date" id="fecha_alta" name="fecha_alta"><br><br>
+            <label for="especialidad">Especialidad:</label>
+            <input type="text" id="especialidad" name="especialidad"><br><br>
+        </div>
+
+        <div id="auxiliarFields" style="display:none;">
+            <label for="cotizacion">Cotización:</label>
+            <input type="text" id="cotizacion" name="cotizacion"><br><br>
+        </div>
+
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

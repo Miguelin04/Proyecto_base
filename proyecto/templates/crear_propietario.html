@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Propietario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>➕ Crear Propietario</h1>
+    <a href="{{ url_for('listar_propietarios') }}">🔙 Volver a la Lista</a>
+    <form method="POST">
+        <label for="dni">Dni:</label>
+        <input type="text" id="dni" name="dni" required><br><br>
+        <label for="nombre">Nombres:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        <label for="apellido">Apellidos:</label>
+        <input type="text" id="apellido" name="apellido" required><br><br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required><br><br>
+        <label for="telefono">Telefono:</label>
+        <input type="text" id="telefono" name="telefono" required><br><br>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Propietarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>👥 Lista de Propietarios</h1>
+    <a href="{{ url_for('index') }}">🏠 Volver al Inicio</a>
+    <a href="{{ url_for('crear_propietario') }}">➕ Crear Propietario</a>
+    <table border="1">
+        <tr>
+            <th>Dni</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+        </tr>
+        {% for propietario in propietarios %}
+        <tr>
+            <td>{{ propietario.dni }}</td>
+            <td>{{ propietario.nombre }}</td>
+            <td>{{ propietario.apellido }}</td>
+            <td>{{ propietario.direccion }}</td>
+            <td>{{ propietario.telefono }}</td>
+            <td class="acciones">
+                <a class="btn btn-edit" href="{{ url_for('editar_propietario', dni=propietario.dni) }}">✏️ Editar</a>
+                <form action="{{ url_for('eliminar_propietario', dni=propietario.dni) }}" method="POST" onsubmit="return confirm('¿Seguro que deseas eliminar este libro?');">
+                    <button class="btn btn-delete" type="submit">🗑️ Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Mascota</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>➕ Crear Mascota</h1>
+    <a href="{{ url_for('listar_mascotas') }}">🔙 Volver a la Lista</a>
+    <form method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" required><br><br>
+        <label for="edad">Edad:</label>
+        <input type="text" id="edad" name="edad"><br><br>
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required><br><br>
+        <label for="propietario_dni">Propietario:</label>
+        <select id="propietario_dni" name="propietario_dni" required>
+            {% for propietario in propietarios %}
+                <option value="{{ propietario.dni }}">{{ propietario.nombre }}</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

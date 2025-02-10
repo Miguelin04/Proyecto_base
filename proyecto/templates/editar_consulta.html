@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Propietario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>✏️ Editar Usuario</h1>
+    <a href="{{ url_for('listar_propietarios') }}">🔙 Volver a la Lista</a>
+    <form method="POST">
+        <label for="nombre">Nombres:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ propietario.nombre }}" required><br><br>
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellido" name="apellido" value="{{ propietario.apellido }}" required><br><br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" value="{{ propietario.direccion }}" required><br><br>
+        <label for="telefono">Telefono:</label>
+        <input type="text" id="telefono" name="telefono" value="{{ propietario.telefono }}" required><br><br>
+        <button type="submit">Actualizar</button>
+    </form>
+</body>
+</html>

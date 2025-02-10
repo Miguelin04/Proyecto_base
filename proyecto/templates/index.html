@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="background"></div>  <!-- Capa de fondo -->
+        <h1>Bienvenido a la Clinica Veterinaria</h1>
+        <ul class="menu">
+            <li><a href="{{ url_for('listar_mascotas') }}">🐩 Ver Mascotas</a></li>
+            <li><a href="{{ url_for('listar_propietarios') }}">👤 Agregar Propietario</a></li>
+            <li><a href="{{ url_for('crear_mascota') }}">🐾 Agregar Mascota</a></li>
+            <li><a href="{{ url_for('listar_consultas') }}">🕵🏼 Generar Consulta</a></li>
+            <li><a href="{{ url_for('crear_personal') }}">👩🏻‍⚕️ Agregar Personal</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

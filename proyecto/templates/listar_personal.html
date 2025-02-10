@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Personal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>👩🏻‍⚕️ Lista de Personal</h1>
+    <a href="{{ url_for('index') }}">🏠 Volver al Inicio</a>
+    <a href="{{ url_for('crear_personal') }}">➕ Crear Personal</a>
+    <table border="1">
+        <tr>
+            <th>DNI</th>
+            <th>Código</th>
+            <th>Nombres</th>
+            <th>Tipo</th>
+        </tr>
+        {% for persona in personal %}
+        <tr>
+            <td>{{ persona.dni }}</td>
+            <td>{{ persona.codigo }}</td>
+            <td>{{ persona.nombre }}</td>
+            <td>{{ persona.tipo }}</td>
+            
+        
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

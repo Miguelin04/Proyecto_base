@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Consultas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>🕵🏼 Lista de Consultas</h1>
+    <a href="{{ url_for('index') }}">🏠 Volver al Inicio</a>
+    <a href="{{ url_for('crear_consulta') }}">➕ Crear Consulta</a>
+    <table border="1">
+        <tr>
+            <th>Fecha de Consulta</th>
+            <th>Diagnóstico</th>
+            <th>Veterinario (DNI)</th>
+            <th>Mascota (ID)</th>
+        </tr>
+        {% for consulta in consultas %}
+        <tr>
+            <td>{{ consulta.fecha_consulta }}</td>
+            <td>{{ consulta.diagnostico }}</td>
+            <td>{{ consulta.veterinario_dni }}</td>
+            <td>{{ consulta.mascota_id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
